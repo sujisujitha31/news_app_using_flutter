@@ -41,3 +41,27 @@ Flutter: The core framework.
 To add these dependencies, ensure your pubspec.yaml file includes the above packages.
 
 
+
+
+Approach to Building this application
+
+1.UI Design
+First, design the UI using Flutter widgets.
+Ensure the layout is responsive and user-friendly.
+
+2.API Request Setup
+Create a separate file for handling API requests.
+Define the base URL and implement methods for API calls using Dio.
+Since we only need GET, implement only the getNews() method.
+
+3.Install and Setup GetX
+Install GetX for state management and navigation.
+Create a HomeController to manage API calls and state.
+
+4.Fetching News Data
+Call the getNews() API inside the controller.
+Store the list of news articles in an observable variable.
+Use the update() method to refresh the UI when new data is fetched.
+
+5.UI Update with GetX
+Use GetBuilder to update the UI dynamically based on the fetched news data.
