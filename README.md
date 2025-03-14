@@ -15,7 +15,7 @@ Installation
 To run this project locally, follow these steps:
 
 Clone the repository:
-git clone https://github.com/your-username/news-app.git
+git clone https://github.com/sujisujitha31/news_app_using_flutter/
 cd news-app
 
 Install dependencies:
