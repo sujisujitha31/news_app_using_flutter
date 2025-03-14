@@ -36,6 +36,8 @@ GetX: For state management and navigation.
 
 Google Fonts: For custom text styling.
 
+SharedPreferences: For local storage
+
 Flutter: The core framework.
 
 To add these dependencies, ensure your pubspec.yaml file includes the above packages.
@@ -59,9 +61,11 @@ Install GetX for state management and navigation.
 Create a HomeController to manage API calls and state.
 
 4.Fetching News Data
-Call the getNews() API inside the controller.
+Call the getNews() API inside HomeController.
 Store the list of news articles in an observable variable.
-Use the update() method to refresh the UI when new data is fetched.
+Cache the fetched news in SharedPreferences for offline access.
+Use update() method to refresh the UI dynamically.
+If the internet is not available, show cached news from SharedPreferences.
 
 5.UI Update with GetX
 Use GetBuilder to update the UI dynamically based on the fetched news data.

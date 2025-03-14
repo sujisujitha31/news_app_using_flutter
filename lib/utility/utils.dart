@@ -1,6 +1,19 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+storeData(String data) async {
+  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  sharedPreferences.setString("articles", data);
+}
+
+retrieveData(String key) async {
+  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  return sharedPreferences.getString(key) ?? "";
+}
 
 class TextWithDmSansFont extends StatelessWidget {
   const TextWithDmSansFont({
@@ -48,8 +61,21 @@ class TextWithDmSansFont extends StatelessWidget {
 }
 
 createCustomDateFormat(DateTime? day) {
-  if (day != null)
+  if (day != null) {
     return "${day.day} ${DateFormat.MMM().format(day)} ${day.year}";
-  else
+  } else {
     return "";
+  }
+}
+
+Future<bool> checkInternetConnection() async {
+  try {
+    final result = await InternetAddress.lookup('google.com');
+    if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+      return true;
+    }
+    return false;
+  } on SocketException catch (_) {
+    return false;
+  }
 }
